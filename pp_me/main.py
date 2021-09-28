@@ -19,13 +19,13 @@ def getKwargs() -> Namespace:
 
     return parser.parse_args()
 
-
-def loadJSON(filename: str) -> Any:
+def loadJSON(filename: str) ->  Any:
     data: Any
     with open(file=filename, mode="r") as file:
         data = load(file)
         file.close()
     return data
+
 
 
 def main() -> None:
@@ -36,7 +36,6 @@ def main() -> None:
         quit(1)
     else:
         print(loadJSON(args.json))
-
 
 if __name__ == "__main__":
     main()
