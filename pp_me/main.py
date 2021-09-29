@@ -1,3 +1,4 @@
+from _typeshed import NoneType
 from argparse import ArgumentParser, Namespace
 from json import load
 from pprint import pprint
@@ -30,17 +31,21 @@ def loadJSON(filename: str) -> Any:
         return data
     except FileNotFoundError:
         print("Invalid file path")
-        quit(2)
+        quit(3)
 
 
 def main() -> None:
     args: Namespace = getKwargs()
 
-    if args.input[-5::] == ".json":
-        pprint(loadJSON(args.input))
-    else:
-        print("Invalid file extension")
-        quit(1)
+    try:
+        if args.input[-5::] == ".json":
+            pprint(loadJSON(args.input))
+        else:
+            print("Invalid file extension")
+            quit(1)
+    except NoneType:
+        print("No arguements passed")
+        quit(2)
 
 
 if __name__ == "__main__":
