@@ -11,10 +11,11 @@ def getKwargs() -> Namespace:
     )
 
     parser.add_argument(
-        "-j",
-        "--json",
+        "-i",
+        "--input",
         type=str,
-        help="JSON file to pretty print",
+        help="Input file to pretty print",
+        required=False
     )
 
     return parser.parse_args()
@@ -31,11 +32,11 @@ def loadJSON(filename: str) -> Any:
 def main() -> None:
     args: Namespace = getKwargs()
 
-    if args.json[-5::] != ".json":
-        print("Invalid JSON file extension")
-        quit(1)
-    else:
+    if args.input[-5::] != ".json":
         print(loadJSON(args.json))
+    else:
+        print("Invalid file extension")
+        quit(1)
 
 
 if __name__ == "__main__":
