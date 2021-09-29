@@ -38,7 +38,7 @@ setup(
     install_requires=[],
     entry_points={
         "console_scripts": [
-            "pp-me = pp-me.main:main",
+            "pp-me = pp_me.main:main",
         ]
     },
 )
