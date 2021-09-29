@@ -1,4 +1,3 @@
-from _typeshed import NoneType
 from argparse import ArgumentParser, Namespace
 from json import load
 from pprint import pprint
@@ -43,7 +42,7 @@ def main() -> None:
         else:
             print("Invalid file extension")
             quit(1)
-    except NoneType:
+    except Exception:
         print("No arguements passed")
         quit(2)
 
