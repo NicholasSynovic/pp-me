@@ -1,6 +1,6 @@
 from argparse import ArgumentParser, Namespace
 from json import load
-from pprint import pprint as print
+from pprint import pprint
 from typing import Any
 
 
@@ -23,17 +23,21 @@ def getKwargs() -> Namespace:
 
 def loadJSON(filename: str) -> Any:
     data: Any
-    with open(file=filename, mode="r") as file:
-        data = load(file)
-        file.close()
-    return data
+    try:
+        with open(file=filename, mode="r") as file:
+            data = load(file)
+            file.close()
+        return data
+    except FileNotFoundError:
+        print("Invalid file path")
+        quit(2)
 
 
 def main() -> None:
     args: Namespace = getKwargs()
 
-    if args.input[-5::] != ".json":
-        print(loadJSON(args.json))
+    if args.input[-5::] == ".json":
+        pprint(loadJSON(args.input))
     else:
         print("Invalid file extension")
         quit(1)
