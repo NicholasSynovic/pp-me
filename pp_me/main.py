@@ -11,11 +11,7 @@ def getKwargs() -> Namespace:
     )
 
     parser.add_argument(
-        "-i",
-        "--input",
-        type=str,
-        help="Input file to pretty print",
-        required=False
+        "-i", "--input", type=str, help="Input file to pretty print", required=False
     )
 
     return parser.parse_args()
